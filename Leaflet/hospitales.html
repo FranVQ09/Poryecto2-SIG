@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css"
+    integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14="
+    crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
+    integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg="
+    crossorigin=""></script>
+    
+    <style>
+        #map {position: absolute; top: 0; bottom: 0; left: 0; right: 0;}
+
+    </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EscuelasCR 2022</title>
+
+
+
+</head>
+<body>
+    <div id="map"></div>
+    <img src="file:///Users/franvq09/Desktop/Leaflet/poblacion2022png.png" alt="">
+    <script>
+        var map = L.map('map').setView([10.0000000, -84.0000000], 7);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        atributtion: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+    var img = 'file:///Users/franvq09/Desktop/Leaflet/poblacion2022png.png',
+    imageBounds = [[11.209489666624496, -86.05349667691863],[8.188487038714001, -82.84548892790016]];
+L.imageOverlay(img, imageBounds, {opacity:0.5}).addTo(map);
+
+var hospitales = {
+"type": "FeatureCollection",
+"name": "hospitalesFinal",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "cat": 1, "cod": 3, "distrito": "LIBERIA", "canton": "LIBERIA", "nombre": "HOSPITAL DR. ENRIQUE BALTODANO LIBERIA" }, "geometry": { "type": "Point", "coordinates": [ -85.437457644202766, 10.629920845491508 ] } },
+{ "type": "Feature", "properties": { "cat": 2, "cod": 12, "distrito": "URUCA", "canton": "SAN JOSE", "nombre": "HOSPITAL MEXICO" }, "geometry": { "type": "Point", "coordinates": [ -84.116177746866725, 9.956110521706757 ] } },
+{ "type": "Feature", "properties": { "cat": 3, "cod": 17, "distrito": "EL CARMEN", "canton": "SAN JOSE", "nombre": "HOSPITAL DR. RAFAEL ANGEL CALDERON GUARDIA" }, "geometry": { "type": "Point", "coordinates": [ -84.066915463984088, 9.933901610301088 ] } },
+{ "type": "Feature", "properties": { "cat": 4, "cod": 20, "distrito": "GRECIA", "canton": "GRECIA", "nombre": "HOSPITAL SAN FRANCISCO DE ASIS GRECIA" }, "geometry": { "type": "Point", "coordinates": [ -84.31082683890061, 10.073124491582629 ] } },
+{ "type": "Feature", "properties": { "cat": 5, "cod": 26, "distrito": "LIMON", "canton": "LIMON", "nombre": "HOSPITAL DR. TONY FACIO C. LIMON" }, "geometry": { "type": "Point", "coordinates": [ -83.029834515346423, 9.991682243742508 ] } },
+{ "type": "Feature", "properties": { "cat": 6, "cod": 33, "distrito": "GUADALUPE", "canton": "GOICOECHEA", "nombre": "HOSPITAL CRISTIANO JERUSALEM" }, "geometry": { "type": "Point", "coordinates": [ -84.052465295829847, 9.946926722819121 ] } }
+]
+}
+var colorHospital = {
+    radius: 4,
+    fillColor: "#ff0000",
+    color: "#000",
+    weight: 1,
+    opacity: 1,
+    fillOpacity: 0.8
+};
+
+L.geoJSON(hospitales, {
+    pointToLayer: function (feature, latlng) {
+        return L.circleMarker(latlng, colorHospital);
+    }
+}).addTo(map);
+
+    </script>
+</body>
+</html>
+
