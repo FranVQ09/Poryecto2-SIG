@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css"
+    integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14="
+    crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
+    integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg="
+    crossorigin=""></script>
+    
+    <style>
+        #map {position: absolute; top: 0; bottom: 0; left: 0; right: 0;}
+
+    </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poblacion Costa Rica 2022</title>
+
+
+
+</head>
+<body>
+    <div id="map"></div>
+    <img src="file:///Users/franvq09/Desktop/Leaflet/poblacion2022png.png" alt="">
+    <script>
+        var map = L.map('map').setView([10.0000000, -84.0000000], 7);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        atributtion: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+    var img = 'file:///Users/franvq09/Desktop/Leaflet/poblacion2022png.png',
+    imageBounds = [[11.209489666624496, -86.05349667691863],[8.188487038714001, -82.84548892790016]];
+L.imageOverlay(img, imageBounds, {opacity:0.5}).addTo(map);
+    </script>
+</body>
+</html>
+
